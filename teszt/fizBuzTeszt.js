@@ -8,22 +8,28 @@ QUnit.module('fizBuz', function() {
     QUnit.test('üres sorozat(0)', function(assert) {
       assert.equal(fizbuz(0),"");
     });
-    QUnit.test('n = 1', function(assert) {
-      assert.equal(fizbuz(1),"1");
+    QUnit.test('sem 3-mal sem 5-tel nem osztható számok 15-ig', function(assert) {
+      let semHarommalSemOttel=[1, 2, 4, 7, 8, 11, 13];
+      semHarommalSemOttel.forEach(function (elem) {
+        assert.equal(aktErtek(elem),elem);
+      })
     });
-    QUnit.test('n = 2', function(assert) {
-      assert.equal(fizbuz(2),"1, 2");
+    QUnit.test('3-mal osztható de 5-tel nem osztható számok 15-ig', function(assert) {
+      let harommalOszthatoak=[3, 6, 9, 12];
+      harommalOszthatoak.forEach(function (elem) {
+        assert.equal(aktErtek(elem),"fizz");
+      })
     });
-    QUnit.test('n = 3', function(assert) {
-      assert.equal(fizbuz(3),"1, 2, fizz");
+    QUnit.test('5-tel osztható de 3-mal nem osztható számok 15-ig', function(assert) {
+      let ottelOszthatoak=[5, 10];
+      ottelOszthatoak.forEach(function (elem) {
+        assert.equal(aktErtek(elem),"buzz");
+      })
     });
-    QUnit.test('n = 4', function(assert) {
-      assert.equal(fizbuz(4),"1, 2, fizz, 4");
+    QUnit.test('n = 15 aktErtek fv', function(assert) {
+      assert.equal(aktErtek(15),"fizzbuzz");
     });
-    QUnit.test('n = 5', function(assert) {
-      assert.equal(fizbuz(5),"1, 2, fizz, 4, buzz");
-    });
-    QUnit.test('n = 6', function(assert) {
-      assert.equal(fizbuz(6),"1, 2, fizz, 4, buzz, fizz");
-    });
+    QUnit.test('n = 15 fizbuzz fv', function(assert) {
+      assert.equal(fizbuz(15),"1, 2, fizz, 4, buzz, fizz, 7, 8, fizz, buzz, 11, fizz, 13, 14, fizzbuzz");
+    });    
   });
